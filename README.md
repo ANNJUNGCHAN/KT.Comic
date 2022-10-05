@@ -45,69 +45,27 @@ https://user-images.githubusercontent.com/89781598/193985854-3bec5847-c038-48d6-
 
 ## 파일 구조
 ```
-📦KT.PM10
- ┣ 📂Crawling
- ┃ ┣ 📂CrawlingData
- ┃ ┃ ┣ 📜sunrise_sunset_2021.csv
- ┃ ┃ ┗ 📜sunrise_sunset_test.csv
- ┃ ┣ 📂DataList
- ┃ ┃ ┣ 📜2021_datelist.csv
- ┃ ┃ ┗ 📜2022_datelist.csv
- ┃ ┗ 📜Code.ipynb
- ┣ 📂Data
- ┃ ┣ 📜air_2021.csv
- ┃ ┣ 📜air_2022.csv
- ┃ ┣ 📜test.csv
- ┃ ┣ 📜train.csv
- ┃ ┣ 📜weather_2021.csv
- ┃ ┗ 📜weather_2022.csv
- ┣ 📂Model
- ┃ ┣ 📂DataBase_For_Modeling
- ┃ ┃ ┣ 📜Baseline_results.zip
- ┃ ┃ ┣ 📜Feature_Importance.zip
- ┃ ┃ ┣ 📜Remove_not_important_features_results.zip
- ┃ ┃ ┣ 📜resid_test.zip
- ┃ ┃ ┣ 📜resid_train.zip
- ┃ ┃ ┣ 📜seasonal_test.zip
- ┃ ┃ ┣ 📜seasonal_train.zip
- ┃ ┃ ┣ 📜trend_test.zip
- ┃ ┃ ┗ 📜trend_train.zip
- ┃ ┣ 📂Model_Save
- ┃ ┃ ┣ 📜Baseline.7z
- ┃ ┃ ┗ 📜Remove_importance_variables.7z
- ┃ ┣ 📜Baseline.ipynb
- ┃ ┗ 📜Remove_not_important_variable_and_Ensemble.ipynb
- ┗ 📂Preprocessing
- ┃ ┣ 📜autocorrelation.ipynb
- ┃ ┣ 📜preprocessing.ipynb
- ┃ ┗ 📜TimeSeriesDecomposition.ipynb
+📦KT.Comic
+ ┣ 📂code
+ ┃ ┣ 📜Extraction.py
+ ┃ ┣ 📜Model.py
+ ┃ ┣ 📜MoveFile.py
+ ┃ ┣ 📜predict.py
+ ┃ ┣ 📜train.py
+ ┃ ┣ 📜Video2Image.py
+ ┃ ┗ 📜YoloMatrix.py
 ```
 ## 파일 
-- 각 폴더마다 안에 있는 readme를 통해 상세한 프로젝트 내용을 알 수 있습니다.
+- Extraction.py : 이미지 전처리 함수들이 들어있습니다.
+- Model.py : 모델링에 대한 함수들이 들어있습니다.
+- MoveFile.py : 파일 이동에 대한 함수들이 들어있습니다.
+- predict.py : 비디오를 코너별로 구분하는 코드입니다.
+- train.py : 모델을 학습하는 코드입니다.
+- Video2Image.py : 비디오를 이미지로 바꿔주는 파일입니다.
+- YoloMatrix.py : Yolov5를 이용하여 추출된 객체들의 갯수를 벡터화시키는 함수들이 들어있습니다.
 
-- Crawling : 일출, 일몰 시간을 크롤링한 과정에 대해서 다룹니다.
-    - CrawlingData : 일출, 일몰시간을 크롤링한 데이터가 담겨져 있습니다.
-    - DataList : 크롤링할 시간에 대한 정보를 담고 있는 데이터입니다.
-    - Code.ipynb : 크롤링한 코드를 다룹니다.
-    
-- Data : 초기 데이터와 모델링 데이터 셋이 들어있는 폴더입니다.(초기 데이터 셋은 
-    - air_2021.csv, air_2022.csv : 대기 질에 관한 정보가 들어있는 초기 데이터 셋
-    - weather_2021.csv, weather_2022.csv : 날씨에 대한 정보가 들어있는 초기 데이터 셋
-    - train.csv : 모델 학습을 위해 정제한 데이터 셋
-    - test.csv : 예측을 위해 정제한 데이터 셋
-    
-- Model : 모델링에 대한 정보가 담겨있는 폴더입니다.
-    - DataBase_For_Modeling : 시계열적 특성을 뽑아낸 데이터 셋
-    - Model_Save : 학습시킨 모델을 저장한 파일
-      - Baseline.7z : 초기 모델(variance importance를 고려하지 않고 모든 변수를 넣어서 학습시킨 모델)
-      - Remove_importance_variables.7z : variance importance를 고려하여 중요한 변수만 넣어서 학습시킨 모델
-    - Baseline.ipynb : 초기 모델(variance importance를 고려하지 않고 모든 변수를 넣어서 학습시킨 모델) 코딩 파일
-    - Remove_not_important_variable_and_Ensemble.ipynb : variance importance를 고려하여 중요한 변수만 넣어서 학습시킨 모델의 코딩 파일
- 
-- Preprocessing : 데이터 전처리에 대한 정보가 담겨있는 폴더입니다.
-    - autocorrelation.ipynb : 예측값(PM10)이 과거 몇 시점까지 상관성이 있는지 파악하기 위한 코드
-    - preprocessing.ipynb : 데이터 전처리 함수들이 담겨있는 코드
-    - TimeSeriesDecomposition.ipynb : 시계열 분해를 진행하고, 시계열 분해요소를 추출하는 과정을 담은 코드
+## 참고사항
+- train.py와 predict.py는 Video2Image.py에서 비디오에서 추출된 이미지가 들어있는 폴더의 경로를 넣어준 후, 파라미터를 맞춰 코드를 돌리면 자동 학습, 예측이 진행됩니다.
 
 ## 문의사항
 * email : ajc227ung@gmail.com
